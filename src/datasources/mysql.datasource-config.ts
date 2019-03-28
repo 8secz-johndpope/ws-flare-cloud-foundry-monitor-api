@@ -6,5 +6,5 @@ export const config = {
     port: 3306,
     user: 'test',
     password: 'test',
-    database: 'wsFlareJobsApi'
+    database: 'wsFlareCloudFoundryMonitorApi'
 };

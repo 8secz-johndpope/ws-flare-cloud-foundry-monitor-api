@@ -41,7 +41,7 @@ export async function startMysqlContainer(): Promise<{ container: any, port: num
         Image: 'mysql:5',
         host: '127.0.0.1',
         port: port,
-        Env: ['MYSQL_ROOT_PASSWORD=1', 'MYSQL_USER=test', 'MYSQL_PASSWORD=test', 'MYSQL_DATABASE=wsFlareJobsApi'],
+        Env: ['MYSQL_ROOT_PASSWORD=1', 'MYSQL_USER=test', 'MYSQL_PASSWORD=test', 'MYSQL_DATABASE=wsFlareCloudFoundryMonitorApi'],
         HostConfig: {
             PortBindings: {
                 '3306/tcp': [

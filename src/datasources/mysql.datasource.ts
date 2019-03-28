@@ -7,7 +7,7 @@ export class MysqlDataSource extends juggler.DataSource {
 
     constructor(
         @inject('datasources.config.mysql', {optional: true})
-            dsConfig: object = config,
+        private dsConfig: object = config,
         @inject('mysql.host')
         private host: string,
         @inject('mysql.port')
