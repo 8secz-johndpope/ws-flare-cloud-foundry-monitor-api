@@ -50,12 +50,6 @@ export class Usage extends Entity {
         type: 'number',
         required: true,
     })
-    cpu_quota: number;
-
-    @property({
-        type: 'number',
-        required: true,
-    })
     disk_quota: number;
 
     @property({
