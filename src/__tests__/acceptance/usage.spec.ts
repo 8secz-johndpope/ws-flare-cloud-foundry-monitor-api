@@ -21,6 +21,7 @@ describe('Usage', () => {
 
     it('should create a new usage statistic', async () => {
         const res = await client.post('/usages').send({
+            jobId: 'job1-id',
             appId: 'app1-id',
             mem: 1024,
             cpu: 2056,
@@ -36,6 +37,7 @@ describe('Usage', () => {
         }).expect(200);
 
         expect(res.body.id).not.null();
+        expect(res.body.jobId).to.eql('job1-id');
         expect(res.body.appId).to.eql('app1-id');
         expect(res.body.mem).to.eql(1024);
         expect(res.body.cpu).to.eql(2056);
@@ -51,6 +53,7 @@ describe('Usage', () => {
 
     it('should get a list of usage statistics', async () => {
         await client.post('/usages').send({
+            jobId: 'job1-id',
             appId: 'app1-id',
             mem: 1024,
             cpu: 2056,
@@ -65,6 +68,7 @@ describe('Usage', () => {
             name: 'app1'
         }).expect(200);
         await client.post('/usages').send({
+            jobId: 'job1-id',
             appId: 'app1-id',
             mem: 1024,
             cpu: 2056,
@@ -79,6 +83,7 @@ describe('Usage', () => {
             name: 'app1'
         }).expect(200);
         await client.post('/usages').send({
+            jobId: 'job1-id',
             appId: 'app1-id',
             mem: 1024,
             cpu: 2056,

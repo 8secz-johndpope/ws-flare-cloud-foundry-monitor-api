@@ -14,6 +14,12 @@ export class Usage extends Entity {
         type: 'string',
         required: true,
     })
+    jobId: string;
+
+    @property({
+        type: 'string',
+        required: true,
+    })
     appId: string;
 
     @property({
