@@ -1,6 +1,7 @@
-import { Client, expect } from '@loopback/testlab';
-import { WsFlareJobsApiApplication } from '../..';
-import { setupApplication, startMysqlContainer } from './test-helper';
+import {Client, expect} from '@loopback/testlab';
+import {WsFlareJobsApiApplication} from '../..';
+import {setupApplication, startMysqlContainer} from './test-helper';
+import {Usage} from '../../models';
 
 describe('Usage', () => {
     let app: WsFlareJobsApiApplication;
@@ -32,7 +33,7 @@ describe('Usage', () => {
             time: '2014-06-19 22:37:58 +0000',
             state: 'RUNNING',
             uptime: 9002,
-            name: 'app1'
+            name: 'my-super-app'
         }).expect(200);
 
         expect(res.body.id).not.null();
@@ -46,7 +47,7 @@ describe('Usage', () => {
         expect(res.body.time).to.eql('2014-06-19 22:37:58 +0000');
         expect(res.body.state).to.eql('RUNNING');
         expect(res.body.uptime).to.eql(9002);
-        expect(res.body.name).to.eql('app1');
+        expect(res.body.name).to.eql('my-super-app');
     });
 
     it('should get a list of usage statistics', async () => {
@@ -54,7 +55,7 @@ describe('Usage', () => {
             jobId: 'job1-id',
             appId: 'app1-id',
             mem: 1024,
-            cpu: 2056,
+            cpu: 0.003,
             disk: 6008,
             mem_quota: 2056,
             disk_quota: 50077,
@@ -62,7 +63,7 @@ describe('Usage', () => {
             time: '2014-06-19 22:37:58 +0000',
             state: 'RUNNING',
             uptime: 9002,
-            name: 'app1'
+            name: 'my-test-usage'
         }).expect(200);
         await client.post('/usages').send({
             jobId: 'job1-id',
@@ -76,7 +77,7 @@ describe('Usage', () => {
             time: '2014-06-19 22:37:58 +0000',
             state: 'RUNNING',
             uptime: 9002,
-            name: 'app1'
+            name: 'app2'
         }).expect(200);
         await client.post('/usages').send({
             jobId: 'job1-id',
@@ -90,10 +91,14 @@ describe('Usage', () => {
             time: '2014-06-19 22:37:58 +0000',
             state: 'RUNNING',
             uptime: 9002,
-            name: 'app1'
+            name: 'app3'
         }).expect(200);
 
         const res = await client.get('/usages').expect(200);
+
+        const testUsage: Usage = res.body.find((usage: Usage) => usage.name === 'my-test-usage');
+
+        expect(testUsage.cpu).to.equal(0.003);
 
         expect(res.body.length).to.be.greaterThan(2);
     });

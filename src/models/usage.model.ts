@@ -1,4 +1,4 @@
-import { Entity, model, property } from '@loopback/repository';
+import {Entity, model, property} from '@loopback/repository';
 import * as uuid from 'uuid/v4';
 
 @model()
@@ -24,18 +24,27 @@ export class Usage extends Entity {
 
     @property({
         type: 'number',
+        dataType: "decimal",
+        precision: 10,
+        scale: 3,
         required: true,
     })
     mem: number;
 
     @property({
         type: 'number',
+        dataType: "decimal",
+        precision: 10,
+        scale: 3,
         required: true,
     })
     cpu: number;
 
     @property({
         type: 'number',
+        dataType: "decimal",
+        precision: 10,
+        scale: 3,
         required: true,
     })
     disk: number;
