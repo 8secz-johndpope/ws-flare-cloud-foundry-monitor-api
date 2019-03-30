@@ -24,7 +24,7 @@ describe('Usage', () => {
             jobId: 'job1-id',
             appId: 'app1-id',
             mem: 1024,
-            cpu: 2056,
+            cpu: 0.23,
             disk: 6008,
             mem_quota: 2056,
             disk_quota: 50077,
@@ -39,7 +39,7 @@ describe('Usage', () => {
         expect(res.body.jobId).to.eql('job1-id');
         expect(res.body.appId).to.eql('app1-id');
         expect(res.body.mem).to.eql(1024);
-        expect(res.body.cpu).to.eql(2056);
+        expect(res.body.cpu).to.eql(0.23);
         expect(res.body.mem_quota).to.eql(2056);
         expect(res.body.disk_quota).to.eql(50077);
         expect(res.body.instance).to.eql(0);
