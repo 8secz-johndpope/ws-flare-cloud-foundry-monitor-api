@@ -24,9 +24,6 @@ export class Usage extends Entity {
 
     @property({
         type: 'number',
-        dataType: "decimal",
-        precision: 10,
-        scale: 3,
         required: true,
     })
     mem: number;
@@ -34,7 +31,6 @@ export class Usage extends Entity {
     @property({
         type: 'number',
         dataType: "decimal",
-        precision: 10,
         scale: 3,
         required: true,
     })
@@ -42,9 +38,6 @@ export class Usage extends Entity {
 
     @property({
         type: 'number',
-        dataType: "decimal",
-        precision: 10,
-        scale: 3,
         required: true,
     })
     disk: number;
