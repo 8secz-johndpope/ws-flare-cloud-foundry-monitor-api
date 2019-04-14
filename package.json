@@ -23,11 +23,12 @@
     "tslint": "lb-tslint",
     "tslint:fix": "npm run tslint -- --fix",
     "pretest": "npm run clean && npm run build",
-    "test": "lb-mocha -t 120000 --allow-console-logs --exit \"dist/__tests__\"",
+    "test": "nyc --reporter=text-summary --reporter=html lb-mocha -t 120000 --allow-console-logs --exit \"dist/__tests__\"",
     "migrate": "node ./dist/migrate",
     "prestart": "npm run build",
     "start": "node .",
-    "prepublishOnly": "npm run test"
+    "prepublishOnly": "npm run test",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git"
@@ -66,8 +67,10 @@
     "@types/node": "^10.11.2",
     "@types/uuid": "^3.4.4",
     "async": "^2.6.2",
+    "coveralls": "^3.0.3",
     "mysql": "^2.16.0",
     "node-docker-api": "^1.1.22",
+    "nyc": "^13.3.0",
     "random-port-as-promised": "^1.0.0",
     "tslint": "^5.12.0",
     "typescript": "^3.3.1"
