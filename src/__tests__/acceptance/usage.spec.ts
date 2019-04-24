@@ -1,7 +1,7 @@
-import {Client, expect} from '@loopback/testlab';
-import {WsFlareJobsApiApplication} from '../..';
-import {setupApplication, startMysqlContainer} from './test-helper';
-import {Usage} from '../../models';
+import { Client, expect } from '@loopback/testlab';
+import { WsFlareJobsApiApplication } from '../..';
+import { setupApplication, startMysqlContainer } from './test-helper';
+import { Usage } from '../../models';
 
 describe('Usage', () => {
     let app: WsFlareJobsApiApplication;
@@ -37,6 +37,7 @@ describe('Usage', () => {
         }).expect(200);
 
         expect(res.body.id).not.null();
+        expect(res.body.createdAt).not.null();
         expect(res.body.jobId).to.eql('job1-id');
         expect(res.body.appId).to.eql('app1-id');
         expect(res.body.mem).to.eql(74944056);

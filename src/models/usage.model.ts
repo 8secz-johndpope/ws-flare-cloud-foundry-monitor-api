@@ -11,6 +11,12 @@ export class Usage extends Entity {
     id?: string;
 
     @property({
+        type: 'date',
+        default: () => new Date(),
+    })
+    createdAt?: string;
+
+    @property({
         type: 'string',
         required: true,
     })

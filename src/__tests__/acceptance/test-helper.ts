@@ -1,4 +1,4 @@
-import { WsFlareJobsApiApplication } from '../..';
+import { main, WsFlareJobsApiApplication } from '../..';
 import { createRestAppClient, givenHttpServerConfig, Client } from '@loopback/testlab';
 import * as mysql from 'mysql';
 import { retry } from 'async';
@@ -6,31 +6,27 @@ import { retry } from 'async';
 let getRandomPort = require('random-port-as-promised');
 let {Docker} = require('node-docker-api');
 
+export interface AppWithClient {
+    app: WsFlareJobsApiApplication;
+    client: Client;
+}
+
 export async function setupApplication(mysqlPort: number): Promise<AppWithClient> {
     const config = givenHttpServerConfig();
 
     config.host = config.host || process.env.HOST || '127.0.0.1';
     config.port = config.port || +(process.env.PORT || 3000);
 
-    const app = new WsFlareJobsApiApplication({
+    const app: WsFlareJobsApiApplication = await main({
         mysqlPort,
         mysqlUsername: 'test',
         mysqlPassword: 'test',
         rest: config,
     });
 
-    await app.boot();
-    await app.migrateSchema();
-    await app.start();
-
     const client = createRestAppClient(app);
 
     return {app, client};
-}
-
-export interface AppWithClient {
-    app: WsFlareJobsApiApplication;
-    client: Client;
 }
 
 export async function startMysqlContainer(): Promise<{ container: any, port: number }> {
