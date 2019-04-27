@@ -30,6 +30,7 @@ export class Usage extends Entity {
 
     @property({
         type: 'number',
+        dataType: 'bigint',
         required: true,
     })
     mem: number;
@@ -50,12 +51,14 @@ export class Usage extends Entity {
 
     @property({
         type: 'number',
+        dataType: 'bigint',
         required: true,
     })
     mem_quota: number;
 
     @property({
         type: 'number',
+        dataType: 'bigint',
         required: true,
     })
     disk_quota: number;

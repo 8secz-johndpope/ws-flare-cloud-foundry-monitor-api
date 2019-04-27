@@ -24,11 +24,11 @@ describe('Usage', () => {
         const res = await client.post('/usages').send({
             jobId: 'job1-id',
             appId: 'app1-id',
-            mem: 74944056,
+            mem: 317297899010,
             cpu: 0.23,
             disk: 6008,
-            mem_quota: 2056,
-            disk_quota: 50077,
+            mem_quota: 317297899023,
+            disk_quota: 317297899034,
             instance: 0,
             time: '2014-06-19 22:37:58 +0000',
             state: 'RUNNING',
@@ -40,10 +40,10 @@ describe('Usage', () => {
         expect(res.body.createdAt).not.null();
         expect(res.body.jobId).to.eql('job1-id');
         expect(res.body.appId).to.eql('app1-id');
-        expect(res.body.mem).to.eql(74944056);
+        expect(res.body.mem).to.eql(317297899010);
         expect(res.body.cpu).to.eql(0.23);
-        expect(res.body.mem_quota).to.eql(2056);
-        expect(res.body.disk_quota).to.eql(50077);
+        expect(res.body.mem_quota).to.eql(317297899023);
+        expect(res.body.disk_quota).to.eql(317297899034);
         expect(res.body.instance).to.eql(0);
         expect(res.body.time).to.eql('2014-06-19 22:37:58 +0000');
         expect(res.body.state).to.eql('RUNNING');
