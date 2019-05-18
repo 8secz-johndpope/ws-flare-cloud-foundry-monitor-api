@@ -3,6 +3,9 @@ import { WsFlareJobsApiApplication } from '../..';
 import { setupApplication, startMysqlContainer } from './test-helper';
 import { Usage } from '../../models';
 
+/**
+ * Tests for storing usages on cloud foundry
+ */
 describe('Usage', () => {
     let app: WsFlareJobsApiApplication;
     let client: Client;

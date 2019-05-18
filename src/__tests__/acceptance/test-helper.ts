@@ -11,6 +11,11 @@ export interface AppWithClient {
     client: Client;
 }
 
+/**
+ * Creates a new instance of the application to be used for testing
+ *
+ * @param mysqlPort - The port mysql is running on
+ */
 export async function setupApplication(mysqlPort: number): Promise<AppWithClient> {
     const config = givenHttpServerConfig();
 
@@ -29,6 +34,9 @@ export async function setupApplication(mysqlPort: number): Promise<AppWithClient
     return {app, client};
 }
 
+/**
+ * Start a new mysql docker container
+ */
 export async function startMysqlContainer(): Promise<{ container: any, port: number }> {
     const docker = new Docker({socketPath: '/var/run/docker.sock'});
     const port = await getRandomPort();

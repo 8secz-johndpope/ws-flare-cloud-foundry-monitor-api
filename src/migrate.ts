@@ -1,5 +1,9 @@
 import { WsFlareJobsApiApplication } from './application';
 
+/**
+ * Automatically sets up mysql tables using loopback models
+ * @param args
+ */
 export async function migrate(args: string[]) {
     const existingSchema = args.includes('--rebuild') ? 'drop' : 'alter';
     console.log('Migrating schemas (%s existing schema)', existingSchema);

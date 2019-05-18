@@ -6,6 +6,9 @@ import { RestApplication } from '@loopback/rest';
 import { ServiceMixin } from '@loopback/service-proxy';
 import { MySequence } from './sequence';
 
+/**
+ * Bootstraps a new loopback server and sets up dependency injection
+ */
 export class WsFlareJobsApiApplication extends BootMixin(
     ServiceMixin(RepositoryMixin(RestApplication)),
 ) {

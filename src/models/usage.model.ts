@@ -1,6 +1,9 @@
 import {Entity, model, property} from '@loopback/repository';
 import * as uuid from 'uuid/v4';
 
+/**
+ * Defines the attributes of a usage model to be stored in the database
+ */
 @model()
 export class Usage extends Entity {
     @property({
